@@ -212,6 +212,14 @@ const GenAIApp = () => {
     const [modelCerebras, setModelCerebras] = useState('llama-c');
     const [labelCerebras, setLabelCerebras] = useState('Llama-C');
 
+    // Add new model "DeepSeek" state variables
+    const [isDeepSeek, setIsDeepSeek] = useState(false);
+    const [isGeneratingDeepSeek, setIsGeneratingDeepSeek] = useState(false);
+    const [showDeepSeek, setShowDeepSeek] = useState(true);
+    const [modelDeepSeek, setModelDeepSeek] = useState('DeepSeek');
+    const [labelDeepSeek, setLabelDeepSeek] = useState('DS');
+
+
     const embedPrompt = async (docId) => {
         try {
             console.log('Embedding prompt:', docId);
@@ -436,6 +444,9 @@ const GenAIApp = () => {
                 if (data.isCerebras !== undefined) setIsCerebras(data.isCerebras);
                 if (data.showCerebras !== undefined) setShowCerebras(data.showCerebras);
                 if (data.labelCerebras !== undefined) setLabelCerebras(data.labelCerebras);
+                if (data.isDeepSeek !== undefined) setIsDeepSeek(data.isDeepSeek);
+                if (data.showDeepSeek !== undefined) setShowDeepSeek(data.showDeepSeek);
+                if (data.labelDeepSeek !== undefined) setLabelDeepSeek(data.labelDeepSeek);
             });
         } catch (error) {
             console.error("Error fetching genAI parameters: ", error);
@@ -676,7 +687,7 @@ const GenAIApp = () => {
         }
 
         // Check if at least one model is selected
-        if (!isOpenAI && !isAnthropic && !isGemini && !isGpto1Mini && !iso1 && !isImage_Dall_e_3 && !isTTS && !isLlama && !isMistral && !isGpt4Turbo && !isGpt4oMini && !isGeminiSearch && !isGeminiFlash && !isPerplexityFast && !isPerplexity && !isCodestral && !isClaudeHaiku && !isSambanova && !isGroq && !isNova && !isCerebras) {
+        if (!isOpenAI && !isAnthropic && !isGemini && !isGpto1Mini && !iso1 && !isImage_Dall_e_3 && !isTTS && !isLlama && !isMistral && !isGpt4Turbo && !isGpt4oMini && !isGeminiSearch && !isGeminiFlash && !isPerplexityFast && !isPerplexity && !isCodestral && !isClaudeHaiku && !isSambanova && !isGroq && !isNova && !isCerebras && !isDeepSeek) {
             alert('Please select at least one model.');
             return;
         }
@@ -800,6 +811,11 @@ const GenAIApp = () => {
             callAPI(modelCerebras);
         }
 
+        if (isDeepSeek && showDeepSeek) {
+            setIsGeneratingDeepSeek(true); // Set generating state to true
+            callAPI(modelDeepSeek);
+        }
+
         try {
             const configurationCollection = collection(db, 'genai', user.uid, 'configuration');
             const q = query(configurationCollection, where('setup', '==', 'genai'));
@@ -829,6 +845,7 @@ const GenAIApp = () => {
                     isGroq,
                     isNova,
                     isCerebras,
+                    isDeepSeek,
 
                     // Feature states
                     isTTS,
@@ -1000,6 +1017,9 @@ const GenAIApp = () => {
             if (selectedModel === modelCerebras) {
                 setIsGeneratingCerebras(false);
             }
+            if (selectedModel === modelDeepSeek) {
+                setIsGeneratingDeepSeek(false);
+            }
         }
     };
 
@@ -1104,6 +1124,7 @@ const GenAIApp = () => {
         setIsGroq(status);
         setIsNova(status);
         setIsCerebras(status);
+        setIsDeepSeek(status);
 
         // Set all "show" states to false/true
         setShowOpenAI(status);
@@ -1125,6 +1146,7 @@ const GenAIApp = () => {
         setShowGroq(status);
         setShowNova(status);
         setShowCerebras(status);
+        setShowDeepSeek(status);
         setShowTemp(status);
         setShowTop_p(status);
         setShowAutoPrompt(status);
@@ -1426,6 +1448,16 @@ const GenAIApp = () => {
                             <label className={isGeneratingCerebras ? 'flashing' : ''}>{labelCerebras}</label>
                         </button>
                     )}
+                    {showDeepSeek && (
+                        <button 
+                            className={isDeepSeek ? 'button_selected' : 'button'}
+                            onClick={() => handleLLMChange(setIsDeepSeek, !isDeepSeek)}
+                        >
+                            <label className={isGeneratingDeepSeek ? 'flashing' : ''}>
+                                {labelDeepSeek}
+                            </label>
+                        </button>
+                    )}
                     {showTemp && (
                         <label style={{ marginLeft: '8px' }}>
                             Temp:
@@ -1529,7 +1561,8 @@ const GenAIApp = () => {
                                 isGeneratingSambanova ||
                                 isGeneratingGroq ||
                                 isGeneratingNova ||
-                                isGeneratingCerebras
+                                isGeneratingCerebras ||
+                                isGeneratingDeepSeek
                             }
                         >
                             {isGenerating ||
@@ -1552,7 +1585,8 @@ const GenAIApp = () => {
                                 isGeneratingSambanova ||
                                 isGeneratingGroq ||
                                 isGeneratingNova ||
-                                isGeneratingCerebras ? (
+                                isGeneratingCerebras ||
+                                isGeneratingDeepSeek ? (
                                 <FaSpinner className="spinning" />
                             ) : (
                                 'GenAI'
@@ -1657,6 +1691,7 @@ const GenAIApp = () => {
                     <option value="groq-mixtral">Groq</option>
                     <option value="nova">Nova</option>
                     <option value="llama-c">Cerebras</option>
+                    <option value="DeepSeek">DeepSeek</option>
                 </select>
                 {showEditPopup && (
                     <div className="modal-overlay">
