@@ -441,12 +441,12 @@ const GenAIApp = () => {
                 if (data.silence_break !== undefined) {
                     silence_break = data.silence_break;
                 }
-                if (data.isCerebras !== undefined) setIsCerebras(data.isCerebras);
-                if (data.showCerebras !== undefined) setShowCerebras(data.showCerebras);
-                if (data.labelCerebras !== undefined) setLabelCerebras(data.labelCerebras);
-                if (data.isDeepSeek !== undefined) setIsDeepSeek(data.isDeepSeek);
-                if (data.showDeepSeek !== undefined) setShowDeepSeek(data.showDeepSeek);
-                if (data.labelDeepSeek !== undefined) setLabelDeepSeek(data.labelDeepSeek);
+                if (data.isCerebras !== undefined) { setIsCerebras(data.isCerebras); }
+                if (data.showCerebras !== undefined) { setShowCerebras(data.showCerebras); }
+                if (data.labelCerebras !== undefined) { setLabelCerebras(data.labelCerebras); }
+                if (data.isDeepSeek !== undefined) { setIsDeepSeek(data.isDeepSeek); }
+                if (data.showDeepSeek !== undefined) { setShowDeepSeek(data.showDeepSeek); }
+                if (data.labelDeepSeek !== undefined) { setLabelDeepSeek(data.labelDeepSeek); }
             });
         } catch (error) {
             console.error("Error fetching genAI parameters: ", error);
