@@ -111,7 +111,7 @@ const GenAIApp = () => {
     const [showMistral, setShowMistral] = useState(false);
     const [showLlama, setShowLlama] = useState(false);
     const [showGptMini, setShowGptMini] = useState(false);
-    const [showGeminiSearch, setShowGeminiSearch] = useState(true);
+    const [showGeminiSearch, setShowGeminiSearch] = useState(false);
     const [showGeminiFlash, setShowGeminiFlash] = useState(false);
     const [showPerplexityFast, setShowPerplexityFast] = useState(false);
     const [showPerplexity, setShowPerplexity] = useState(false);
@@ -143,6 +143,7 @@ const GenAIApp = () => {
     const [showSaveButton, setShowSaveButton] = useState(false);
     const [showSourceDocument, setShowSourceDocument] = useState(false);
     const [showYouTubeButton, setShowYouTubeButton] = useState(false);
+    const [showVoiceSelect, setShowVoiceSelect] = useState(false);
     const mdParser = new MarkdownIt(/* Markdown-it options */);
 
     // Add new state variables for Claude-Haiku
@@ -198,7 +199,7 @@ const GenAIApp = () => {
 
     // Add state variable for AI Search
     const [isAISearch, setIsAISearch] = useState(false);
-    const [showAISearchButton, setShowAISearchButton] = useState(true); // or set based on configuration
+    const [showAISearchButton, setShowAISearchButton] = useState(false); // or set based on configuration
     // Add these state variables near other state declarations
     const [isLiveAudioPlaying, setIsLiveAudioPlaying] = useState({});
     const [isGeneratingDownloadableAudio, setIsGeneratingDownloadableAudio] = useState({});
@@ -379,23 +380,6 @@ const GenAIApp = () => {
                 if (data.isCodestral !== undefined) setIsCodestral(data.isCodestral);
                 if (data.isClaudeHaiku !== undefined) setIsClaudeHaiku(data.isClaudeHaiku);
                 if (data.isSambanova !== undefined) setIsSambanova(data.isSambanova);
-                if (data.showAnthropic !== undefined) setShowAnthropic(data.showAnthropic);
-                if (data.showGemini !== undefined) setShowGemini(data.showGemini);
-                if (data.showOpenAI !== undefined) setShowOpenAI(data.showOpenAI);
-                if (data.showGpt4Turbo !== undefined) setShowGpt4Turbo(data.showGpt4Turbo);
-                if (data.showMistral !== undefined) setShowMistral(data.showMistral);
-                if (data.showPerplexityFast !== undefined) setShowPerplexityFast(data.showPerplexityFast);
-                if (data.showPerplexity !== undefined) setShowPerplexity(data.showPerplexity);
-                if (data.showGptMini !== undefined) setShowGptMini(data.showGptMini);
-                if (data.showGeminiSearch !== undefined) setShowGeminiSearch(data.showGeminiSearch);
-                if (data.showGeminiFlash !== undefined) setShowGeminiFlash(data.showGeminiFlash);
-                if (data.showCodeStral !== undefined) setShowCodeStral(data.showCodeStral);
-                if (data.showLlama !== undefined) setShowLlama(data.showLlama);
-                if (data.showo !== undefined) setShowo(data.showo);
-                if (data.showoMini !== undefined) setShowoMini(data.showoMini);
-                if (data.showClaudeHaiku !== undefined) setShowClaudeHaiku(data.showClaudeHaiku);
-                if (data.showSambanova !== undefined) setShowSambanova(data.showSambanova);
-                if (data.showGroq !== undefined) setShowGroq(data.showGroq);
                 if (data.labelGroq !== undefined) {
                     setLabelGroq(data.labelGroq);
                 }
@@ -410,8 +394,6 @@ const GenAIApp = () => {
                     questionTrimLength = data.questionTrimLength;
                 }
                 if (data.isNova !== undefined) setIsNova(data.isNova);
-                if (data.showNova !== undefined) setShowNova(data.showNova);
-                // Add these new label handlers
                 if (data.labelGroq !== undefined) setLabelGroq(data.labelGroq);
                 if (data.labelOpenAI !== undefined) setLabelOpenAI(data.labelOpenAI);
                 if (data.labelAnthropic !== undefined) setLabelAnthropic(data.labelAnthropic);
@@ -447,6 +429,33 @@ const GenAIApp = () => {
                 if (data.isDeepSeek !== undefined) { setIsDeepSeek(data.isDeepSeek); }
                 if (data.showDeepSeek !== undefined) { setShowDeepSeek(data.showDeepSeek); }
                 if (data.labelDeepSeek !== undefined) { setLabelDeepSeek(data.labelDeepSeek); }
+                if (data.showAISearchButton !== undefined) { setShowAISearchButton(data.showAISearchButton); }
+                if (data.isAISearch !== undefined) { setIsAISearch(data.isAISearch); }
+                if (data.showGeminiSearch !== undefined) { setShowGeminiSearch(data.showGeminiSearch); }
+                if (data.showGeminiFlash !== undefined) { setShowGeminiFlash(data.showGeminiFlash); }
+                if (data.showPerplexityFast !== undefined) { setShowPerplexityFast(data.showPerplexityFast); }
+                if (data.showPerplexity !== undefined) { setShowPerplexity(data.showPerplexity); }
+                if (data.showCodeStral !== undefined) { setShowCodeStral(data.showCodeStral); }
+                if (data.showClaudeHaiku !== undefined) { setShowClaudeHaiku(data.showClaudeHaiku); }
+                if (data.showSambanova !== undefined) { setShowSambanova(data.showSambanova); }
+                if (data.showo !== undefined) { setShowo(data.showo); }
+                if (data.showoMini !== undefined) { setShowoMini(data.showoMini); }
+                if (data.showNova !== undefined) { setShowNova(data.showNova); }
+                if (data.showGroq !== undefined) { setShowGroq(data.showGroq); }
+                if (data.showCerebras !== undefined) { setShowCerebras(data.showCerebras); }
+                if (data.showDeepSeek !== undefined) { setShowDeepSeek(data.showDeepSeek); }
+                if (data.showAISearchButton !== undefined) { setShowAISearchButton(data.showAISearchButton); }
+                if (data.showOpenAI !== undefined) { setShowOpenAI(data.showOpenAI); } 
+                if (data.showAnthropic !== undefined) { setShowAnthropic(data.showAnthropic); }
+                if (data.showGemini !== undefined) { setShowGemini(data.showGemini);}
+                if (data.showGpt4Turbo !== undefined) { setShowGpt4Turbo(data.showGpt4Turbo);}
+                if (data.showMistral !== undefined) { setShowMistral(data.showMistral);}
+                if (data.showGptMini !== undefined) { setShowGptMini(data.showGptMini);}
+                if (data.showCodeStral !== undefined) { setShowCodeStral(data.showCodeStral);}
+                if (data.showLlama !== undefined) { setShowLlama(data.showLlama);}
+                if (data.showTemp !== undefined) { setShowTemp(data.showTemp);}
+                if (data.showTop_p !== undefined) { setShowTop_p(data.showTop_p);}
+                if (data.showVoiceSelect !== undefined) { setShowVoiceSelect(data.showVoiceSelect);}
             });
         } catch (error) {
             console.error("Error fetching genAI parameters: ", error);
@@ -1502,10 +1511,10 @@ const GenAIApp = () => {
                             </label>
                         </button>
                     }
-                    <VoiceSelect
+                    {showVoiceSelect && <VoiceSelect
                         selectedVoice={voiceName} // Current selected voice
                         onVoiceChange={setVoiceName} // Handler to update selected voice
-                    />
+                    />}
                     {!isTTS && (
                         <select className="promptDropdownInput" id="promptSelect"
                             onChange={(e) => {
