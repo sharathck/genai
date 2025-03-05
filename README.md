@@ -125,7 +125,7 @@
     "name": "Gen AI Studio",
     "icons": [
       {
-        "src": "ai.avif"
+        "src": "ai.jpeg"
       }
     ],
     "start_url": ".",
