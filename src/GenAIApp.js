@@ -105,8 +105,8 @@ const GenAIApp = () => {
     const [temperature, setTemperature] = useState(0.7);
     const [top_p, setTop_p] = useState(0.8);
     const [autoPromptLimit, setAutoPromptLimit] = useState(1);
-    const [showTemp, setShowTemp] = useState(true);
-    const [showTop_p, setShowTop_p] = useState(true);
+    const [showTemp, setShowTemp] = useState(false);
+    const [showTop_p, setShowTop_p] = useState(false);
     const [showGpt4Turbo, setShowGpt4Turbo] = useState(false);
     const [showMistral, setShowMistral] = useState(true);
     const [showLlama, setShowLlama] = useState(true);
@@ -114,7 +114,7 @@ const GenAIApp = () => {
     const [showGeminiSearch, setShowGeminiSearch] = useState(false);
     const [showGeminiFlash, setShowGeminiFlash] = useState(false);
     const [showGeminiThink, setShowGeminiThink] = useState(true);
-    const [showPerplexity, setShowPerplexity] = useState(true);
+    const [showPerplexity, setShowPerplexity] = useState(false);
     const [showCodeStral, setShowCodeStral] = useState(true);
     const [showGemini, setShowGemini] = useState(true);
     const [showAnthropic, setShowAnthropic] = useState(true);
@@ -123,7 +123,7 @@ const GenAIApp = () => {
     const [showImageDallE3, setShowImageDallE3] = useState(false);
     const [showTTS, setShowTTS] = useState(false);
     const [showoMini, setShowoMini] = useState(true);
-    const [showAutoPrompt, setShowAutoPrompt] = useState(true);
+    const [showAutoPrompt, setShowAutoPrompt] = useState(false);
     const [modelAnthropic, setModelAnthropic] = useState('claude');
     const [modelGemini, setModelGemini] = useState('gemini');
     const [modelOpenAI, setModelOpenAI] = useState('gpt');
@@ -149,6 +149,7 @@ const GenAIApp = () => {
     // Add new state variables for Claude-Haiku
     const [isClaudeHaiku, setIsClaudeHaiku] = useState(false);
     const [isGeneratingClaudeHaiku, setIsGeneratingClaudeHaiku] = useState(false);
+    const [modelClaudeHaiku, setModelClaudeHaiku] = useState('Claude-Haiku');
 
     // Add showClaudeHaiku state variable
     const [showClaudeHaiku, setShowClaudeHaiku] = useState(true); // Set to true or false as needed
@@ -173,7 +174,7 @@ const GenAIApp = () => {
     const [modelNova, setModelNova] = useState('nova');
 
     // Add these state variables after other model state variables
-    const [labelOpenAI, setLabelOpenAI] = useState('ChatGPT');
+   /* const [labelOpenAI, setLabelOpenAI] = useState('ChatGPT');
     const [labelAnthropic, setLabelAnthropic] = useState('Claude');
     const [labelGemini, setLabelGemini] = useState('Gemini');
     const [labeloMini, setLabeloMini] = useState('o-mini');
@@ -185,6 +186,23 @@ const GenAIApp = () => {
     const [labelClaudeThink, setLabelClaudeThink] = useState('ClaudeThink');
     const [labelo, setLabelo] = useState('o1 Think');
     const [labelGeminiThink, setLabelGeminiThink] = useState('Gemini Think');
+    const [labelPerplexity, setLabelPerplexity] = useState('Plxty');
+    const [labelCodestral, setLabelCodestral] = useState('CodeStral');
+    const [labelClaudeHaiku, setLabelClaudeHaiku] = useState('Claude-Haiku');
+    const [labelSambanova, setLabelSambanova] = useState('Llama(S)');
+    const [labelNova, setLabelNova] = useState('Nova');*/
+    const [labelOpenAI, setLabelOpenAI] = useState('Chaarvi');
+    const [labelAnthropic, setLabelAnthropic] = useState('Rudra');
+    const [labelGemini, setLabelGemini] = useState('Siya');
+    const [labeloMini, setLabeloMini] = useState('Krishna');
+    const [labelMistral, setLabelMistral] = useState('Mistral');
+    const [labelLlama, setLabelLlama] = useState('Llama(405B)');
+    const [labelGpt4Turbo, setLabelGpt4Turbo] = useState('Gpt4Turbo');
+    const [labelGeminiSearch, setLabelGeminiSearch] = useState('SearchGenAI');
+    const [labelGeminiFlash, setLabelGeminiFlash] = useState('Gemini Flash');
+    const [labelClaudeThink, setLabelClaudeThink] = useState('Arjun');
+    const [labelo, setLabelo] = useState('Medha');
+    const [labelGeminiThink, setLabelGeminiThink] = useState('Virat');
     const [labelPerplexity, setLabelPerplexity] = useState('Plxty');
     const [labelCodestral, setLabelCodestral] = useState('CodeStral');
     const [labelClaudeHaiku, setLabelClaudeHaiku] = useState('Claude-Haiku');
@@ -361,58 +379,6 @@ const GenAIApp = () => {
                 if (data.autoPrompt !== undefined) setAutoPrompt(data.autoPrompt);
                 if (data.autoPromptLimit !== undefined) setAutoPromptLimit(data.autoPromptLimit);
                 if (data.dataLimit !== undefined) dataLimit = data.dataLimit;
-                if (data.isGroq !== undefined) setIsGroq(data.isGroq);
-                if (data.isAnthropic !== undefined) setIsAnthropic(data.isAnthropic);
-                if (data.isGemini !== undefined) setIsGemini(data.isGemini);
-                if (data.isOpenAI !== undefined) setIsOpenAI(data.isOpenAI);
-                if (data.isoMini !== undefined) setIsoMini(data.isoMini);
-                if (data.iso !== undefined) setIso(data.iso);
-                if (data.isImage_Dall_e_3 !== undefined) setIsImage_Dall_e_3(data.isImage_Dall_e_3);
-                if (data.isTTS !== undefined) setIsTTS(data.isTTS);
-                if (data.isLlama !== undefined) setIsLlama(data.isLlama);
-                if (data.isMistral !== undefined) setIsMistral(data.isMistral);
-                if (data.isGpt4Turbo !== undefined) setIsGpt4Turbo(data.isGpt4Turbo);
-                if (data.isClaudeThink !== undefined) setIsClaudeThink(data.isClaudeThink);
-                if (data.isGeminiSearch !== undefined) setIsGeminiSearch(data.isGeminiSearch);
-                if (data.isGeminiFlash !== undefined) setIsGeminiFlash(data.isGeminiFlash);
-                if (data.isGeminiThink !== undefined) setIsGeminiThink(data.isGeminiThink);
-                if (data.isPerplexity !== undefined) setIsPerplexity(data.isPerplexity);
-                if (data.isCodestral !== undefined) setIsCodestral(data.isCodestral);
-                if (data.isClaudeHaiku !== undefined) setIsClaudeHaiku(data.isClaudeHaiku);
-                if (data.isSambanova !== undefined) setIsSambanova(data.isSambanova);
-                if (data.labelGroq !== undefined) {
-                    setLabelGroq(data.labelGroq);
-                }
-                if (data.showTTS !== undefined) {
-                    setShowTTS(data.showTTS);
-                }
-                if (data.showImageDallE3 !== undefined) setShowImageDallE3(data.showImageDallE3);
-                if (data.autoPromptSeparator !== undefined) {
-                    autoPromptSeparator = data.autoPromptSeparator;
-                }
-                if (data.questionTrimLength !== undefined) {
-                    questionTrimLength = data.questionTrimLength;
-                }
-                if (data.isNova !== undefined) setIsNova(data.isNova);
-                if (data.labelGroq !== undefined) setLabelGroq(data.labelGroq);
-                if (data.labelOpenAI !== undefined) setLabelOpenAI(data.labelOpenAI);
-                if (data.labelAnthropic !== undefined) setLabelAnthropic(data.labelAnthropic);
-                if (data.labelGemini !== undefined) setLabelGemini(data.labelGemini);
-                if (data.labeloMini !== undefined) setLabeloMini(data.labeloMini);
-                if (data.labelMistral !== undefined) setLabelMistral(data.labelMistral);
-                if (data.labelLlama !== undefined) setLabelLlama(data.labelLlama);
-                if (data.labelGpt4Turbo !== undefined) setLabelGpt4Turbo(data.labelGpt4Turbo);
-                if (data.labelGeminiSearch !== undefined) setLabelGeminiSearch(data.labelGeminiSearch);
-                if (data.labelGeminiFlash !== undefined) setLabelGeminiFlash(data.labelGeminiFlash);
-                if (data.labelClaudeThink !== undefined) setLabelClaudeThink(data.labelClaudeThink);
-                if (data.labelo !== undefined) setLabelo(data.labelo);
-                if (data.labelGeminiThink !== undefined) setLabelGeminiThink(data.labelGeminiThink);
-                if (data.labelPerplexity !== undefined) setLabelPerplexity(data.labelPerplexity);
-                if (data.labelCodestral !== undefined) setLabelCodestral(data.labelCodestral);
-                if (data.labelClaudeHaiku !== undefined) setLabelClaudeHaiku(data.labelClaudeHaiku);
-                if (data.labelSambanova !== undefined) setLabelSambanova(data.labelSambanova);
-                if (data.labelNova !== undefined) setLabelNova(data.labelNova);
-                if (data.showYouTubeButton !== undefined) setShowYouTubeButton(data.showYouTubeButton);
                 if (data.showImagesSearchWordsButton !== undefined) setShowImagesSearchWordsButton(data.showImagesSearchWordsButton);
                 if (data.showYouTubeTitleDescriptionButton !== undefined) setShowYouTubeTitleDescriptionButton(data.showYouTubeTitleDescriptionButton);
                 if (data.showHomeWorkButton !== undefined) setShowHomeWorkButton(data.showHomeWorkButton);
@@ -713,7 +679,7 @@ const GenAIApp = () => {
 
         if (isClaudeHaiku && showClaudeHaiku) {
             setIsGeneratingClaudeHaiku(true); // Set generating state to true
-            callAPI('Claude-Haiku');
+            callAPI(modelClaudeHaiku);
         }
 
         // Generate API calls for each selected model
@@ -1088,7 +1054,6 @@ const GenAIApp = () => {
             await fetchGenAIParameters(uid);
             setShowTemp(true);
             setShowTop_p(true);
-            setShowAutoPrompt(true);
         }
         setIsImage_Dall_e_3(checked);
     };
@@ -1106,7 +1071,6 @@ const GenAIApp = () => {
             await fetchGenAIParameters(uid);
             setShowTemp(true);
             setShowTop_p(true);
-            setShowAutoPrompt(true);
         }
         setIsTTS(checked);
     };
@@ -1155,10 +1119,6 @@ const GenAIApp = () => {
         setShowGroq(status);
         setShowNova(status);
         setShowCerebras(status);
-        setShowDeepSeek(status);
-        setShowTemp(status);
-        setShowTop_p(status);
-        setShowAutoPrompt(status);
     };
 
     // Add this helper function to handle LLM model selection
@@ -1598,7 +1558,7 @@ const GenAIApp = () => {
                                 isGeneratingDeepSeek ? (
                                 <FaSpinner className="spinning" />
                             ) : (
-                                'GenAI'
+                                'Execute'
                             )}
                         </button>
                     )}
