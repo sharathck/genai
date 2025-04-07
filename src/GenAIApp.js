@@ -127,8 +127,8 @@ const GenAIApp = () => {
     const [modelAnthropic, setModelAnthropic] = useState('claude');
     const [modelGemini, setModelGemini] = useState('gemini');
     const [modelOpenAI, setModelOpenAI] = useState('gpt');
-    const [modeloMini, setModeloMini] = useState('o3-mini');
-    const [modelo, setModelo] = useState('o1');
+    const [modeloMini, setModeloMini] = useState('o-mini-think');
+    const [modelo, setModelo] = useState('o-think');
     const [modelLlama, setModelLlama] = useState('llama');
     const [modelMistral, setModelMistral] = useState('mistral');
     const [modelClaudeThink, setModelClaudeThink] = useState('claude-think');
