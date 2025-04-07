@@ -127,8 +127,8 @@ const GenAIApp = () => {
     const [modelAnthropic, setModelAnthropic] = useState('claude');
     const [modelGemini, setModelGemini] = useState('gemini');
     const [modelOpenAI, setModelOpenAI] = useState('gpt');
-    const [modeloMini, setModeloMini] = useState('o-mini');
-    const [modelo, setModelo] = useState('o');
+    const [modeloMini, setModeloMini] = useState('o3-mini');
+    const [modelo, setModelo] = useState('o1');
     const [modelLlama, setModelLlama] = useState('llama');
     const [modelMistral, setModelMistral] = useState('mistral');
     const [modelClaudeThink, setModelClaudeThink] = useState('claude-think');
@@ -136,7 +136,7 @@ const GenAIApp = () => {
     const [modelGeminiFlash, setModelGeminiFlash] = useState('gemini-flash');
     const [modelGpt4Turbo, setModelGpt4Turbo] = useState('gpt-turbo');
     const [modelImageDallE3, setModelImageDallE3] = useState('dall-e-3');
-    const [modelGeminiThink, setModelGeminiThink] = useState('perplexity-fast');
+    const [modelGeminiThink, setModelGeminiThink] = useState('gemini-think');
     const [modelPerplexity, setModelPerplexity] = useState('perplexity');
     const [modelCodestralApi, setModelCodestralApi] = useState('mistral-codestral-api'); // New state
     const [autoPrompt, setAutoPrompt] = useState(true);
