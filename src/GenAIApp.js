@@ -205,7 +205,7 @@ const GenAIApp = () => {
     const [labelo, setLabelo] = useState('Medha');
     const [labelGeminiThink, setLabelGeminiThink] = useState('Virat');
     const [labelPerplexity, setLabelPerplexity] = useState('Plxty');
-    const [labelCodestral, setLabelCodestral] = useState('CodeStral');
+    const [labelCodestral, setLabelCodestral] = useState('Aarush');
     const [labelClaudeHaiku, setLabelClaudeHaiku] = useState('Claude-Haiku');
     const [labelSambanova, setLabelSambanova] = useState('Llama(S)');
     const [labelNova, setLabelNova] = useState('Nova');
@@ -237,7 +237,7 @@ const GenAIApp = () => {
     const [isGeneratingDeepSeek, setIsGeneratingDeepSeek] = useState(false);
     const [showDeepSeek, setShowDeepSeek] = useState(true);
     const [modelDeepSeek, setModelDeepSeek] = useState('DeepSeek');
-    const [labelDeepSeek, setLabelDeepSeek] = useState('DS');
+    const [labelDeepSeek, setLabelDeepSeek] = useState('Devansh');
 
 
     const embedPrompt = async (docId) => {
