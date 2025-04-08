@@ -398,9 +398,7 @@ const GenAIApp = () => {
                 if (data.showCerebras !== undefined) { setShowCerebras(data.showCerebras); }
                 if (data.labelCerebras !== undefined) { setLabelCerebras(data.labelCerebras); }
                 if (data.isDeepSeek !== undefined) { setIsDeepSeek(data.isDeepSeek); }
-                if (data.showDeepSeek !== undefined) { setShowDeepSeek(data.showDeepSeek); }
                 if (data.labelDeepSeek !== undefined) { setLabelDeepSeek(data.labelDeepSeek); }
-                if (data.showAISearchButton !== undefined) { setShowAISearchButton(data.showAISearchButton); }
                 if (data.isAISearch !== undefined) { setIsAISearch(data.isAISearch); }
                 if (data.showVoiceSelect !== undefined) { setShowVoiceSelect(data.showVoiceSelect);}
             });
