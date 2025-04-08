@@ -402,30 +402,6 @@ const GenAIApp = () => {
                 if (data.labelDeepSeek !== undefined) { setLabelDeepSeek(data.labelDeepSeek); }
                 if (data.showAISearchButton !== undefined) { setShowAISearchButton(data.showAISearchButton); }
                 if (data.isAISearch !== undefined) { setIsAISearch(data.isAISearch); }
-                if (data.showGeminiSearch !== undefined) { setShowGeminiSearch(data.showGeminiSearch); }
-                if (data.showGeminiFlash !== undefined) { setShowGeminiFlash(data.showGeminiFlash); }
-                if (data.showGeminiThink !== undefined) { setShowGeminiThink(data.showGeminiThink); }
-                if (data.showPerplexity !== undefined) { setShowPerplexity(data.showPerplexity); }
-                if (data.showCodeStral !== undefined) { setShowCodeStral(data.showCodeStral); }
-                if (data.showClaudeHaiku !== undefined) { setShowClaudeHaiku(data.showClaudeHaiku); }
-                if (data.showSambanova !== undefined) { setShowSambanova(data.showSambanova); }
-                if (data.showo !== undefined) { setShowo(data.showo); }
-                if (data.showoMini !== undefined) { setShowoMini(data.showoMini); }
-                if (data.showNova !== undefined) { setShowNova(data.showNova); }
-                if (data.showGroq !== undefined) { setShowGroq(data.showGroq); }
-                if (data.showCerebras !== undefined) { setShowCerebras(data.showCerebras); }
-                if (data.showDeepSeek !== undefined) { setShowDeepSeek(data.showDeepSeek); }
-                if (data.showAISearchButton !== undefined) { setShowAISearchButton(data.showAISearchButton); }
-                if (data.showOpenAI !== undefined) { setShowOpenAI(data.showOpenAI); } 
-                if (data.showAnthropic !== undefined) { setShowAnthropic(data.showAnthropic); }
-                if (data.showGemini !== undefined) { setShowGemini(data.showGemini);}
-                if (data.showGpt4Turbo !== undefined) { setShowGpt4Turbo(data.showGpt4Turbo);}
-                if (data.showMistral !== undefined) { setShowMistral(data.showMistral);}
-                if (data.showClaudeThink !== undefined) { setShowClaudeThink(data.showClaudeThink);}
-                if (data.showCodeStral !== undefined) { setShowCodeStral(data.showCodeStral);}
-                if (data.showLlama !== undefined) { setShowLlama(data.showLlama);}
-                if (data.showTemp !== undefined) { setShowTemp(data.showTemp);}
-                if (data.showTop_p !== undefined) { setShowTop_p(data.showTop_p);}
                 if (data.showVoiceSelect !== undefined) { setShowVoiceSelect(data.showVoiceSelect);}
             });
         } catch (error) {
