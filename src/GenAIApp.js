@@ -617,7 +617,7 @@ const GenAIApp = () => {
             console.log('Edit Prompt:', editPromptTag);
             console.log('Select Prompt Tag:', fullTexts);
             setSelectedPrompt(promptTag);
-            setShowSourceDocument(true);
+            setShowSourceDocument(false);
             autoPromptInput = promptInput;
             autoPromptInput = autoPromptInput + "\n" + autoPromptSeparator + "\n" + fullTexts.join("\n");
         } catch (error) {
