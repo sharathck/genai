@@ -124,6 +124,7 @@ const GenAIApp = () => {
     const [showTTS, setShowTTS] = useState(false);
     const [showoMini, setShowoMini] = useState(true);
     const [showAutoPrompt, setShowAutoPrompt] = useState(false);
+    const [showPrompt, setShowPrompt] = useState(false);    
     const [modelAnthropic, setModelAnthropic] = useState('claude');
     const [modelGemini, setModelGemini] = useState('gemini');
     const [modelOpenAI, setModelOpenAI] = useState('gpt');
@@ -343,9 +344,13 @@ const GenAIApp = () => {
             setUser(currentUser);
             if (currentUser) {
                 const urlParams = new URLSearchParams(window.location.search);
+                const genaiAdmin = urlParams.get('admin');
                 const genaiParam = urlParams.get('genai');
                 if (genaiParam) {
                     setGenAIParameter(true);
+                }
+                if (genaiAdmin === '46734') {
+                    setShowPrompt(true);
                 }
                 if (process.env.REACT_APP_MAIN_APP === 'GenAI') {
                     setGenAIParameter(true);
@@ -1475,7 +1480,7 @@ const GenAIApp = () => {
                         selectedVoice={voiceName} // Current selected voice
                         onVoiceChange={setVoiceName} // Handler to update selected voice
                     />}
-                    {!isTTS && (
+                    {showPrompt && (
                         <select className="promptDropdownInput" id="promptSelect"
                             onChange={(e) => {
                                 handlePromptChange(e.target.value);
@@ -1490,7 +1495,7 @@ const GenAIApp = () => {
                             ))}
                         </select>
                     )}
-                    {!isTTS && (
+                    {showPrompt && (
                         <button
                             className="signonpagebutton"
                             onClick={() => handleEditPrompt()}
