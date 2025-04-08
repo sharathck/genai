@@ -385,8 +385,6 @@ const GenAIApp = () => {
                 if (data.autoPromptLimit !== undefined) setAutoPromptLimit(data.autoPromptLimit);
                 if (data.dataLimit !== undefined) dataLimit = data.dataLimit;
                 if (data.showImagesSearchWordsButton !== undefined) setShowImagesSearchWordsButton(data.showImagesSearchWordsButton);
-                if (data.showYouTubeTitleDescriptionButton !== undefined) setShowYouTubeTitleDescriptionButton(data.showYouTubeTitleDescriptionButton);
-                if (data.showHomeWorkButton !== undefined) setShowHomeWorkButton(data.showHomeWorkButton);
                 if (data.voiceName !== undefined) setVoiceName(data.voiceName);
                 if (data.chunk_size !== undefined) {
                     chunk_size = data.chunk_size;
@@ -395,7 +393,6 @@ const GenAIApp = () => {
                     silence_break = data.silence_break;
                 }
                 if (data.isCerebras !== undefined) { setIsCerebras(data.isCerebras); }
-                if (data.showCerebras !== undefined) { setShowCerebras(data.showCerebras); }
                 if (data.labelCerebras !== undefined) { setLabelCerebras(data.labelCerebras); }
                 if (data.isDeepSeek !== undefined) { setIsDeepSeek(data.isDeepSeek); }
                 if (data.labelDeepSeek !== undefined) { setLabelDeepSeek(data.labelDeepSeek); }
