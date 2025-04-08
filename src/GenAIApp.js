@@ -109,7 +109,7 @@ const GenAIApp = () => {
     const [showTop_p, setShowTop_p] = useState(false);
     const [showGpt4Turbo, setShowGpt4Turbo] = useState(false);
     const [showMistral, setShowMistral] = useState(true);
-    const [showLlama, setShowLlama] = useState(true);
+    const [showLlama, setShowLlama] = useState(false);
     const [showClaudeThink, setShowClaudeThink] = useState(true);
     const [showGeminiSearch, setShowGeminiSearch] = useState(false);
     const [showGeminiFlash, setShowGeminiFlash] = useState(false);
@@ -153,7 +153,7 @@ const GenAIApp = () => {
     const [modelClaudeHaiku, setModelClaudeHaiku] = useState('Claude-Haiku');
 
     // Add showClaudeHaiku state variable
-    const [showClaudeHaiku, setShowClaudeHaiku] = useState(true); // Set to true or false as needed
+    const [showClaudeHaiku, setShowClaudeHaiku] = useState(false); // Set to true or false as needed
 
     // Add new state variables for Sambanova
     const [isSambanova, setIsSambanova] = useState(false);
