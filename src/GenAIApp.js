@@ -102,8 +102,8 @@ const GenAIApp = () => {
     const [selectedPromptFullText, setSelectedPromptFullText] = useState(null);
     const [showMainApp, setShowMainApp] = useState(false);
     const [GenAIParameter, setGenAIParameter] = useState(false);
-    const [temperature, setTemperature] = useState(0.7);
-    const [top_p, setTop_p] = useState(0.8);
+    const [temperature, setTemperature] = useState(6);
+    const [top_p, setTop_p] = useState(0.7);
     const [autoPromptLimit, setAutoPromptLimit] = useState(1);
     const [showTemp, setShowTemp] = useState(false);
     const [showTop_p, setShowTop_p] = useState(false);
