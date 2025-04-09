@@ -111,7 +111,7 @@ const GenAIApp = () => {
     const [showMistral, setShowMistral] = useState(true);
     const [showLlama, setShowLlama] = useState(false);
     const [showClaudeThink, setShowClaudeThink] = useState(true);
-    const [showGeminiSearch, setShowGeminiSearch] = useState(false);
+    const [showGeminiSearch, setShowGeminiSearch] = useState(true);
     const [showGeminiFlash, setShowGeminiFlash] = useState(false);
     const [showGeminiThink, setShowGeminiThink] = useState(true);
     const [showPerplexity, setShowPerplexity] = useState(false);
@@ -199,7 +199,7 @@ const GenAIApp = () => {
     const [labelMistral, setLabelMistral] = useState('Mistral');
     const [labelLlama, setLabelLlama] = useState('Llama(405B)');
     const [labelGpt4Turbo, setLabelGpt4Turbo] = useState('Gpt4Turbo');
-    const [labelGeminiSearch, setLabelGeminiSearch] = useState('SearchGenAI');
+    const [labelGeminiSearch, setLabelGeminiSearch] = useState('Karan');
     const [labelGeminiFlash, setLabelGeminiFlash] = useState('Gemini Flash');
     const [labelClaudeThink, setLabelClaudeThink] = useState('Arjun');
     const [labelo, setLabelo] = useState('Medha');
