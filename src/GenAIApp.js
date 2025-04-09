@@ -108,7 +108,7 @@ const GenAIApp = () => {
     const [showTemp, setShowTemp] = useState(false);
     const [showTop_p, setShowTop_p] = useState(false);
     const [showGpt4Turbo, setShowGpt4Turbo] = useState(false);
-    const [showMistral, setShowMistral] = useState(true);
+    const [showMistral, setShowMistral] = useState(false);
     const [showLlama, setShowLlama] = useState(false);
     const [showClaudeThink, setShowClaudeThink] = useState(true);
     const [showGeminiSearch, setShowGeminiSearch] = useState(true);
