@@ -60,6 +60,7 @@ const GenAIApp = () => {
     const [password, setPassword] = useState('');
     const [uid, setUid] = useState(null);
     const [promptInput, setPromptInput] = useState('');
+    const [isUploading, setIsUploading] = useState(false);
     const [isGenerating, setIsGenerating] = useState(false);
     const [isGeneratingGemini, setIsGeneratingGemini] = useState(false);
     const [isGeneratingAnthropic, setIsGeneratingAnthropic] = useState(false);
@@ -1447,10 +1448,6 @@ const GenAIApp = () => {
                             </label>
                         </button>
                     }
-                    {showVoiceSelect && <VoiceSelect
-                        selectedVoice={voiceName} // Current selected voice
-                        onVoiceChange={setVoiceName} // Handler to update selected voice
-                    />}
                     {showPrompt && (
                         <select className="promptDropdownInput" id="promptSelect"
                             onChange={(e) => {
@@ -1474,6 +1471,58 @@ const GenAIApp = () => {
                         >
                             <FaEdit />
                         </button>
+                    )}
+                    &nbsp; 
+                    {isUploading && (
+                      <FaSpinner className="spinning"/>
+                    )}
+                    {showPrompt && (<input
+                        type="file"
+                        accept=".pdf,.docx,.pptx,.xlsx,.xls"
+                        style={{ marginLeft: '8px', padding: '2px', fontSize: '18px' }}
+                        onChange={async (e) => {
+                            const file = e.target.files[0];
+                            if (file) {
+                                const formData = new FormData();
+                                formData.append('file', file);
+                                formData.append('uid', uid);
+                                try {
+                                    setIsUploading(true); // Show spinning wheel
+                                    const response = await fetch(`${process.env.REACT_APP_GENAI_API_URL}md`, {
+                                        method: 'POST',
+                                        body: formData
+                                    });
+                 
+                                    if (!response.ok) {
+                                        const errorData = await response.json();
+                                        throw new Error(errorData.error || 'Failed to upload document.');
+                                    }
+                                    const data = await response.json();
+                                    console.log('Upload Response:', data);
+                                    const genaiCollection = collection(db, 'genai', uid, 'prompts');
+                                    const currentDateTime = new Date();
+                                    const promptSize = data.markdown.length;
+                                    console.log('Adding new prompt from uploaded document');
+                                    const newDocRef = await addDoc(genaiCollection, {
+                                        tag: 'new prompt',
+                                        fullText: data.markdown,
+                                        createdDateTime: currentDateTime,
+                                        modifiedDateTime: currentDateTime,
+                                        size: promptSize
+                                    });
+                                    const docId = newDocRef.id;
+                                    console.log('Document ID:', docId);
+                                    embedPrompt(docId);
+                                    fetchPrompts(uid);
+                                    setIsUploading(false); // Hide spinning wheel
+                                    alert('Document uploaded successfully!');
+                                } catch (error) {
+                                    console.error('Error uploading document:', error);
+                                    alert(`Error: ${error.message}`);
+                                }
+                            }
+                        }}
+                    />
                     )}
                     {showAutoPrompt && (
                         <button className={autoPrompt ? 'button_selected' : 'button'} onClick={() => setAutoPrompt(!autoPrompt)}>
