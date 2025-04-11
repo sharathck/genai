@@ -1917,7 +1917,7 @@ const GenAIApp = () => {
                                         {item.showRawAnswer ? item.answer : (<MdEditor
                                             value={editPromptFullText}
                                             renderHTML={editPromptFullText => mdParser.render(item.answer)}
-                                            config={{ view: { menu: false, md: false, html: true } }}
+                                            config={{ view: { menu: true, md: true, html: true } }}
                                         />)}
                                     </div>
 
